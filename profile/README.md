@@ -46,11 +46,13 @@ The goal: anyone with a cheap board can practise on machines they will never kee
 
 ## Projects
 
+**open-crank is the priority.** open-tick grows only when open-crank needs it; sibling applications such as open-robots come later.
+
 | Project | What it is | Status |
 |---|---|---|
-| [**open-tick**](https://github.com/Open-Heavy-Machinery/open-tick) | The beat a simulated machine keeps: one clock, scenarios as data, traces, CAN and CAN FD bridges, in C11. Pin-level bridges on a Raspberry Pi Pico and a Tang Nano 20K come next. | v0.1 done |
+| [**open-tick**](https://github.com/Open-Heavy-Machinery/open-tick) | The beat a simulated machine keeps: one clock, scenarios as data, traces, CAN and CAN FD bridges, in C11. A pin-level bridge on a Tang Nano 20K comes with open-crank's Level 2; a Raspberry Pi Pico bridge comes when open-robots starts. | v0.1 done |
 | [**open-crank**](https://github.com/Open-Heavy-Machinery/open-crank) | A heavy-duty diesel that answers back over J1939: plant, simulated engine ECU, hydraulic load and a reference controller that builds for a Cortex-M4F. | v0.1 done, runs on open-tick |
-| **open-robots** | DC motors, encoders and IMUs for robots, on open-tick, with no J1939. | planned |
+| **open-robots** | DC motors, encoders and IMUs for robots, on open-tick, with no J1939. | future, after open-crank |
 
 ```mermaid
 flowchart BT
