@@ -51,9 +51,9 @@ The goal: anyone with a cheap board can practise on machines they will never kee
 
 | Project | What it is | Status |
 |---|---|---|
-| [**open-tick**](https://github.com/Open-Heavy-Machinery/open-tick) | The beat a simulated machine keeps: one clock, scenarios as data, traces, CAN and CAN FD bridges, and an oracle that grades a controller by the frames it sends, in C11. A pin-level bridge on a Tang Nano 20K comes with open-crank's Level 2; a Raspberry Pi Pico bridge comes when open-robots starts. | v0.2 done |
+| [**open-tick**](https://github.com/Open-Heavy-Machinery/open-tick) | The beat a simulated machine keeps: one clock, scenarios as data, traces, CAN and CAN FD bridges, and an oracle that grades a controller by the frames it sends and writes its verdicts, in C11. A pin-level bridge on a Tang Nano 20K comes with open-crank's Level 2; a Raspberry Pi Pico bridge comes when open-robots starts. | v0.2.1 done |
 | [**open-crank**](https://github.com/Open-Heavy-Machinery/open-crank) | A heavy-duty diesel that answers back over J1939: plant, simulated engine ECU, hydraulic load and a reference controller that runs on an STM32G431 board over a real CAN bus, and an acceptance suite that grades any controller by its CAN frames. One command builds, programs and tests the board, so you can [check your own bench](https://github.com/Open-Heavy-Machinery/open-crank#run-the-demo-on-a-real-board). | v0.2.2 done, runs on open-tick |
-| [**open-rig**](https://github.com/Open-Heavy-Machinery/open-rig) | A static browser viewer for open-tick traces: one trace, or two on the same time axis, with a layout from the application. | v0.1 |
+| [**open-rig**](https://github.com/Open-Heavy-Machinery/open-rig) | A static browser viewer for open-tick traces: one trace, or two on the same time axis, with a layout from the application, and the oracle's verdicts drawn over them. | v0.2 |
 | **open-robots** | DC motors, encoders and IMUs for robots, on open-tick, with no J1939. | future, after open-crank |
 
 ```mermaid
