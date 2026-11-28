@@ -40,8 +40,8 @@ The engines still do not fit in the apartment. The G431 no longer needs them to.
 To a microcontroller, the world is voltages on pins, edges with timing and frames on a bus. We are building that world in the open:
 
 - **Plants that answer back.** Physics that never quietly helps the controller under test.
-- **A core that keeps time.** It carries signals to real silicon, over a bus today and on the pins next.
-- **A written statement of how faithful it is.** Each machine declares what it needs, each bridge declares what it guarantees, and a run that cannot be faithful is refused instead of passing quietly *(planned)*.
+- **A core that keeps time.** It carries signals to real silicon, over a bus and on the pins.
+- **A written statement of how faithful it is.** Each machine declares what it needs, each bridge declares what it guarantees, and a run that cannot be faithful is refused instead of passing quietly.
 
 The goal: anyone with a cheap board can practise on machines they will never keep at home, and teams reach the real machine with code that has already felt a load.
 
@@ -51,8 +51,8 @@ The goal: anyone with a cheap board can practise on machines they will never kee
 
 | Project | What it is | Status |
 |---|---|---|
-| [**open-tick**](https://github.com/Open-Heavy-Machinery/open-tick) | The beat a simulated machine keeps: one clock, scenarios as data, traces, CAN and CAN FD bridges with transport faults (lost, delayed, jittered and corrupted frames, bus-off), frame logs that record every frame with its step and its time on the bus, and an oracle that grades a controller by the frames it sends and writes its verdicts, in C11. A pin-level bridge on a Tang Nano 20K comes with open-crank's Level 2; a Raspberry Pi Pico bridge comes when open-robots starts. | v0.3.1 done |
-| [**open-crank**](https://github.com/Open-Heavy-Machinery/open-crank) | A heavy-duty diesel that answers back over J1939: plant, simulated engine ECU, hydraulic load and a reference controller that runs on an STM32G431 board over a real CAN bus, and an acceptance suite that grades any controller by its CAN frames, faults included: transport faults, corrupted requests, the engine's diagnostics (DM1) and a watchdog, with numbered safety requirements traced to tests. Every run can write its frames to a frame log, and the bus contract is a DBC. One command builds, programs and tests the board, so you can [check your own bench](https://github.com/Open-Heavy-Machinery/open-crank#run-the-demo-on-a-real-board). | v0.3.2 done, runs on open-tick |
+| [**open-tick**](https://github.com/Open-Heavy-Machinery/open-tick) | The beat a simulated machine keeps: one clock, scenarios as data, traces, CAN and CAN FD bridges with transport faults (lost, delayed, jittered and corrupted frames, bus-off), frame logs that record every frame with its step and its time on the bus, an oracle that grades a controller by the frames it sends and writes its verdicts, in C11; and a Tang Nano 20K bridge that puts the machine on a microcontroller's pins (a 60−2 crank and a cam out, injector pulses captured), with the bridge's clock pacing the run, a budget of every run's timing and a fidelity contract that refuses a run the bridge cannot hold. A Raspberry Pi Pico bridge comes when open-robots starts. | v0.4.0 done |
+| [**open-crank**](https://github.com/Open-Heavy-Machinery/open-crank) | A heavy-duty diesel that answers back over J1939: plant, simulated engine ECU, hydraulic load and a reference controller that runs on an STM32G431 board over a real CAN bus, and an acceptance suite that grades any controller by its CAN frames, faults included: transport faults, corrupted requests, the engine's diagnostics (DM1) and a watchdog, with numbered safety requirements traced to tests. Every run can write its frames to a frame log, and the bus contract is a DBC. One command builds, programs and tests the board, so you can [check your own bench](https://github.com/Open-Heavy-Machinery/open-crank#run-the-demo-on-a-real-board). At [Level 2](https://github.com/Open-Heavy-Machinery/open-crank#level-2-your-firmware-as-the-engine-ecu) your firmware is the engine's own ECU: it reads the crank and cam from open-tick's bridge and its injector pulses fuel the plant, cylinder by cylinder; the reference ECU holds speed in a closed loop on a NUCLEO-G431KB. | v0.4.0 done, runs on open-tick |
 | [**open-rig**](https://github.com/Open-Heavy-Machinery/open-rig) | A static browser viewer for open-tick traces: one trace, or two on the same time axis, with a layout from the application, the oracle's verdicts drawn over them, and the bus beside them: every frame decoded with the application's DBC, J1939 included. | v0.3 |
 | **open-robots** | DC motors, encoders and IMUs for robots, on open-tick, with no J1939. | future, after open-crank |
 
@@ -64,7 +64,7 @@ flowchart BT
     M["your microcontroller<br/>any board, RTOS or language"]
     C --> T
     R --> T
-    M <-->|"CAN today · pins next"| T
+    M <-->|"CAN · pins"| T
 ```
 
 ## How we work
